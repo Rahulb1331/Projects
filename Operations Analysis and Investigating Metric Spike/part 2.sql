@@ -1,5 +1,4 @@
-USE assignment3;
-
+/*part1*/
 SELECT
   user_id,
   COUNT(DISTINCT DATE(occurred_at) - INTERVAL WEEKDAY(occurred_at) DAY) AS weekly_engagement_count
@@ -7,7 +6,8 @@ FROM
   events
 GROUP BY
   user_id;
-  
+
+/*Part2*/
 SELECT
   DATE(created_at - INTERVAL WEEKDAY(created_at) DAY) AS week_start_date,
   COUNT(DISTINCT user_id) AS user_growth
@@ -20,6 +20,7 @@ GROUP BY
 ORDER BY
   week_start_date;
 
+/*Part3*/
 SELECT
   DATE(u.created_at - INTERVAL WEEKDAY(u.created_at) DAY) AS week_start_date,
   COUNT(DISTINCT r.user_id) AS weekly_retention
@@ -36,6 +37,7 @@ GROUP BY
 ORDER BY
   week_start_date;
 
+/*Part4*/
 SELECT
   DATE(occurred_at - INTERVAL WEEKDAY(occurred_at) DAY) AS week_start_date,
   device,
@@ -51,6 +53,7 @@ ORDER BY
   week_start_date,
   device;
 
+/*Part 5*/
 SELECT COUNT(*) AS total_emails_sent
 FROM email_events
 WHERE action = 'sent_weekly_digest'
@@ -66,7 +69,7 @@ FROM email_events
 WHERE action = 'email_clickthrough'
   AND occurred_at < '2023-03-30'; -- Replace with the desired end date (exclusive)
 
-
+/*Part 6*/
 SELECT DISTINCT(action) FROM email_events;
 
 SELECT action, COUNT(*) AS action_count
