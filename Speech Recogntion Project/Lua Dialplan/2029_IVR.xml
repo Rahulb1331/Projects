@@ -1,8 +1,0 @@
-<include>
-        <extension name="speechoperatedivr">
-                <condition field="destination_number" expression="^(2029)$">
-                        <action application="lua" data="dtmf_and_speech.lua"/>
-                </condition>
-        </extension>
-</include>
-
