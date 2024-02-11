@@ -1,11 +1,14 @@
-Select distinct e.name From PROJECT_PARTICIPATION as PP1, EMPLOYEE e Where e.empno=PP1.empno
-and NOT EXISTS (Select * From PROJECT as P Where NOT EXISTS (Select * from PROJECT_PARTICIPATION
-as PP2 Where PP2.projectno=P.projectno and PP1.empno=PP2.empno));
+Select distinct e.name 
+  From PROJECT_PARTICIPATION as PP1, EMPLOYEE e 
+    Where e.empno=PP1.empno and NOT EXISTS 
+      (Select * From PROJECT as P Where NOT EXISTS (Select * from PROJECT_PARTICIPATION
+       as PP2 Where PP2.projectno=P.projectno and PP1.empno=PP2.empno));
 
-Select E.empno,E.name,E.deptno,E.salary,count(P.projectno) From EMPLOYEE as
-E,PROJECT_PARTICIPATION as P Where (E.deptno,E.salary) IN(Select D.deptno,max(salary) From
-EMPLOYEE as EE,DEPARTMENT as D Where EE.deptno=D.deptno Group by D.deptno) and
-E.empno=P.empno Group by(E.empno);
+Select E.empno,E.name,E.deptno,E.salary,count(P.projectno) 
+  From EMPLOYEE as E,PROJECT_PARTICIPATION as P 
+    Where (E.deptno,E.salary) IN(Select D.deptno,max(salary) From
+      EMPLOYEE as EE,DEPARTMENT as D Where EE.deptno=D.deptno Group by D.deptno) and
+      E.empno=P.empno Group by(E.empno);
 
 select e1.empno,e1.name,e2.name as Boss_name from EMPLOYEE e1,EMPLOYEE e2 where
 e2.empno=e1.boss
