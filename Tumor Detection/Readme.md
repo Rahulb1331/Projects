@@ -5,4 +5,4 @@ The analysis involves the following steps:<br>
 2. Splitting the dataset into training and testing sets.<br>
 3. Training each machine learning model on the training set.<br>
 4. Evaluating the models' performance using accuracy metrics on the testing set.<br>
-5. Comparing the accuracy of each algorithm to determine the most effective approach for tumor detection.
+5. Comparing the accuracy of each algorithm to determine the most effective approach for tumor detection. 
