@@ -2,12 +2,9 @@ import requests  # type: ignore
 import re
 import time
 from bs4 import BeautifulSoup  # type: ignore
-import sys
 import os 
 from selenium import webdriver  # type: ignore
 from selenium.webdriver.common.by import By  # type : ignore
-from selenium.webdriver.support.ui import WebDriverWait  # type : ignore
-from selenium.webdriver.support import expected_conditions as EC
 
 
 def get_html(str=[]):
