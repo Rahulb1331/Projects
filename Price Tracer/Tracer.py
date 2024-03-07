@@ -167,6 +167,7 @@ D1 = pd.DataFrame({' ': Images, 'Title':Titles, 'Stars':Stars, 'Price':Prices, '
 # Converting it to csv format which can be downloaded
 D1.to_csv('Final.csv',index= False)
 
+# Using Streamlit to display the scraped information
 st.title("Price Tracer for Laptop")
 st.write("Scraping the Amazon India website for the laptops for Asus, Acer, MSI, Lenovo and HP brands having the rating 4 stars and above and between the price range of 1,00,000 and 1,50,000.")
 #st.table(D1)
