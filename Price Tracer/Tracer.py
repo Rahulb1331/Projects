@@ -7,6 +7,7 @@ import requests
 import bs4 as b
 import csv
 import pandas as pd
+import streamlit as st
 
 #Website to be scraped
 url = "https://www.amazon.in/"
@@ -37,7 +38,7 @@ def apply_filters(driver):
 def extract_info(elements, tag_name, class_name):
     """
     Args:
-    - elements: List of BeautifulSoup elements to search within.
+    - elements: BeautifulSoup elements to search within.
     - tag_name: Name of the tag to search for (e.g., 'div').
     - class_name: Class name of the elements to search for.
     """
@@ -70,6 +71,7 @@ def scraper(driver):
                               class_="puisg-col puisg-col-4-of-12 puisg-col-8-of-16 puisg-col-12-of-20 puisg-col-12-of-24 puis-list-col-right")
         titles.extend(extract_info(block, "span", "a-size-medium a-color-base a-text-normal"))
         stars.extend(extract_info(block, "span", "a-icon-alt"))
+        
         # Iterate over each div tag and extract the prices
         for element in block:
             divs = element.find("div", attrs={"data-cy": "price-recipe"})
@@ -95,6 +97,9 @@ def scraper(driver):
                             continue
                     else:
                         continue
+            if not (divs or divss):
+                prices.append(' ')
+                
         # Extracting the links for the laptops from the website
         link = soup.find_all('h2', class_="a-size-mini a-spacing-none a-color-base s-line-clamp-2")
         links.extend([url + tag.find('a').get('href', '') if tag.find('a') else '' for tag in link])
@@ -154,10 +159,23 @@ Stars = [float(star) for star in stars]
 # Printing the updated list
 print(type(Stars[0]))
 
+
 # Creating the pandas dataframe which has the scraped data
-D1 = pd.DataFrame({'Titles':Titles, 'Star':Stars, 'Prices':Prices, 'Link': Links})
-D1
+D1 = pd.DataFrame({' ': Images, 'Title':Titles, 'Stars':Stars, 'Price':Prices, 'Link': Links})
+
 
 # Converting it to csv format which can be downloaded
 D1.to_csv('Final.csv',index= False)
+
+st.title("Price Tracer for Laptop")
+st.write("Scraping the Amazon India website for the laptops for Asus, Acer, MSI, Lenovo and HP brands having the rating 4 stars and above and between the price range of 1,00,000 and 1,50,000.")
+#st.table(D1)
+# Display images along with the table
+for index, row in D1.iterrows():
+    st.image(row[' '])
+    st.write(row['Title'])
+    st.write(row['Stars'])
+    st.write(row['Price'])
+    st.write(row['Link'])
+    st.write("---")
 
