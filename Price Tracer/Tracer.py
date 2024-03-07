@@ -180,3 +180,6 @@ for index, row in D1.iterrows():
     st.write(row['Link'])
     st.write("---")
 
+#!streamlit run C:\Users\......\Tracer.py 
+
+
