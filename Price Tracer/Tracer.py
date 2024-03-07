@@ -97,7 +97,7 @@ def scraper(driver):
                             continue
                     else:
                         continue
-            if not (divs or divss):
+            if not (divs or divss): #Handling cases where the product price is not available
                 prices.append(' ')
                 
         # Extracting the links for the laptops from the website
