@@ -9,7 +9,7 @@ This data analysis project aims to explore a dataset related to vehicles, perfor
 4. Temporal Analysis<BR>
 5. Market Segmentation
 <h1>Motor Vehicle Collisions Analysis Dashboard</h1>
-This Streamlit application provides an interactive dashboard for analyzing motor vehicle collisions in New York City (NYC). It utilizes Python libraries such as Streamlit, Pandas, NumPy, PyDeck, and Plotly Express to visualize and explore the dataset.
+This Streamlit application provides an interactive dashboard for analyzing motor vehicle collisions in New York City (NYC). It utilizes Python libraries such as Streamlit, Pandas, NumPy, PyDeck, and Plotly Express to visualize and explore the dataset. Adjust the sliders and selectboxes to explore different aspects of motor vehicle collisions. Interact with the visualizations to gain insights into collision patterns. Toggle the "Show Raw Data" checkbox to view the raw dataset.
 <H1>COVID-19 and World Happiness Report Analysis</H1>
 This project aims to analyze the relationship between COVID-19 cases and various factors related to happiness and quality of life using two datasets: one containing information about confirmed COVID-19 cases by country and day, and another containing data from the World Happiness Report. The analysis involves:<BR>
 - Data cleaning and preprocessing to handle missing values and ensure compatibility between datasets.<BR>
