@@ -13,8 +13,7 @@ Provides an interactive 3D map displaying collisions within a given hour frame.<
 3. Minute-by-Minute Breakdown<br>
 Presents a bar chart showing the breakdown of collisions by minute within a particular hour.<br>
 4. Top 5 Dangerous Streets<br>
-Identifies the top 5 most dangerous streets for pedestrians, cyclists, and motorists based on the number of injuries.<br>
-Usage<br>
+Identifies the top 5 most dangerous streets for pedestrians, cyclists, and motorists based on the number of injuries.<br>Usage<br>
 Adjust the sliders and selectboxes to explore different aspects of motor vehicle collisions.
 Interact with the visualizations to gain insights into collision patterns.
 Toggle the "Show Raw Data" checkbox to view the raw dataset.
