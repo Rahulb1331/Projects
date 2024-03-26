@@ -1,5 +1,5 @@
 <H1>Exploratory Data Analysis for the Tumor Dataset</H1>
-
+This project aims to perform exploratory data analysis for the Breast Cancer Wisconsin (Diagnostic) dataset and process and analyze it so  that  it can be used for building a tumor classifier, by identifying from the image whether the given tumor image id Malignant or Benign. In this project EDA has been performed, where uneeded columns have dropped, association between features have been identified along with the outliers and redundant feautures. All this has been done by employing python data analysis libraries including Numpy, Pandas, Matpotlib, Seaborn, etc. which have been used to manipulate the data and understand the given features in the dataset with the help of various charts and plots including Violin plots, Joint plots, Swarm Plots and Correlation Heat maps, to identify the association between the features. 
 <H2>About the Dataset:</H2>
 Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass. They describe characteristics of the cell nuclei present in the image. 
 Attribute Information:
