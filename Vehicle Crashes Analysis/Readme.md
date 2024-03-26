@@ -2,8 +2,7 @@
 This Streamlit application provides an interactive dashboard for analyzing motor vehicle collisions in New York City (NYC). It utilizes Python libraries such as Streamlit, Pandas, NumPy, PyDeck, and Plotly Express to visualize and explore the dataset.<br>
 <h3>Dataset</h3>
 The dataset used in this application is sourced from the NYC Open Data platform. It contains information about motor vehicle collisions in NYC, including the date/time of the collision, location coordinates, and details about the individuals involved.
-
-Features<br>
+Features
 1. Motor Vehicle Collisions Map<br>
 Visualizes the locations of motor vehicle collisions in NYC.
 Allows users to filter collisions based on the number of injured persons.<br>
