@@ -5,13 +5,14 @@ import pydeck as pdk
 import plotly.express as px
 
 DATA_URL = (
-"/home/rhyme/Desktop/Project/Motor_Vehicle_Collisions_-_Crashes.csv"
+"/home/..../Desktop/Project/Motor_Vehicle_Collisions_-_Crashes.csv"
 )
 
 st.title("Motor Vehicle Collisions in New York City")
 st.markdown("This application is a streamlit dashboard that can be used "
 "to analyze motor vehicle collisions in NYC")
 
+# decorator added to the load_data function to avoid reloading of the large dataset whenever changes done dynamically on the webapp.
 @st.cache(persist=True)
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows = nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
@@ -21,17 +22,21 @@ def load_data(nrows):
     data.rename(columns={'crash_date_crash_time': 'date/time'}, inplace= True)
     return data
 
+#Loading 100000 rows from the 1.67 million rows, so as to reduce the computational load and analyze efficiently. 
 data = load_data(100000)
 original_data = data
+
 
 st.header("Where are the most people injured in NYC?")
 injured_people = st.slider("Number of injured persons in vehicle collision", 0, 19)
 st.map(data.query("injured_persons >= @injured_people")[["latitude","longitude"]].dropna(how = 'any'))
 
+
 st.header("How many collisions occur during a given time of day?")
 hour = st.slider("Hour to look at", 0, 23)
 data = data[data['date/time'].dt.hour== hour]
 
+# An interactive 3D geographical map to display the vehicle collisions in a particular hour frame within the New York City.
 st.markdown("Vehicle collisions between hour %i:00 and %i:00" %(hour, (hour + 1) % 24))
 midpoint = (np.average(data['latitude']),np.average(data['longitude']))
 
@@ -57,6 +62,8 @@ st.write(pdk.Deck(
     ],
 ))
 
+
+#Bar chart to give a breakdown on the number of crashes by minutes within a particular hour.
 st.subheader("Breakdown by minute between %i:00 and %i:00"%(hour,(hour+1)%24))
 filtered = data[
     (data['date/time'].dt.hour >= hour) & (data['date/time'].dt.hour <(hour + 1))
@@ -67,6 +74,7 @@ chart_data = pd.DataFrame({'minute': range(60), 'crashes':hist})
 fig = px.bar(chart_data,x = 'minute', y='crashes', hover_data=['minute', 'crashes'], height = 400)
 st.write(fig)
 
+# Displays the top 5 most dangerous streets for the following set of people, Pedestrians, Cyclists and Motorists.
 st.header("Top 5 dangerous streets by affected group")
 select= st.selectbox('Affected type of people', ['Pedestrians', 'Cyclists', 'Motorists'])
 
