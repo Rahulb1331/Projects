@@ -1,0 +1,1 @@
+In this assignment, analysis has been done on CMU Movie Corpus and later a Spelling Recommender has been built which recommends correct spellings to the provided misspelled words using Jaccard Distance, Ngrams and Edit distance. 
